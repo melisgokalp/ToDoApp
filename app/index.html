@@ -6,10 +6,17 @@
     <link rel="stylesheet" href="todo.css">
   </head>
   <body>
-    <h2>My Todo List</h2>
+    <div id="myDIV" class="header">
+
+    <h2 style="margin:5px">ToDo</h2> 
+  </div>
+
     <div ng-controller="TodoListController as todoList">
-      <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
-      [ <a href="" ng-click="todoList.archive()">archive</a> ]
+      
+      <span style="margin:50px">{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
+      [ <a href="" ng-click="todoList.archive()">Archive</a> ]
+      [ <a href="" ng-click="todoList.retrieve()">Retrieve</a> ]
+
       <ul class="unstyled">
         <li ng-repeat="todo in todoList.todos">
           <input type="checkbox" ng-model="todo.done">
@@ -17,9 +24,9 @@
         </li>
       </ul>
       <form ng-submit="todoList.addTodo()">
-        <input type="text" ng-model="todoList.todoText"  size="30"
-               placeholder="add new todo here">
-        <input class="btn-primary" type="submit" value="add">
+        <input style="margin:50px" type="text" ng-model="todoList.todoText"  size="50"
+               placeholder="Add a task here!">
+        <input class="addBtn" type="submit" value="add">
       </form>
     </div>
   </body>

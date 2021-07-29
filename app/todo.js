@@ -2,10 +2,9 @@ angular.module('todoApp', [])
   .controller('TodoListController', function() {
     var todoList = this;
     todoList.todos = [
-      {text:'Todo #1', done:true},
-      {text:'Todo #2', done:false},
-      {text:'Todo #3', done:false},
-      {text:'Todo #4', done:false}];
+      {text:'Read #1', done:false}, 
+      {text:'Todo #2', done:false}];
+    todoList.archived = [];
  
     todoList.addTodo = function() {
       todoList.todos.push({text:todoList.todoText, done:false});
@@ -24,7 +23,16 @@ angular.module('todoApp', [])
       var oldTodos = todoList.todos;
       todoList.todos = [];
       angular.forEach(oldTodos, function(todo) {
-        if (!todo.done) todoList.todos.push(todo);
+        if (!todo.done) todoList.todos.push(todo)
+        else todoList.archived.push(todo);
       });
+    };
+
+    todoList.retrieve = function() {
+      var oldTodos = todoList.archived; 
+      angular.forEach(oldTodos, function(todo) {
+        todoList.todos.push(todo);
+      });
+      todoList.archived = [];
     };
   });
