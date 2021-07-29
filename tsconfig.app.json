@@ -6,10 +6,9 @@
     "types": []
   },
   "files": [
-    "src/main.ts",
-    "src/polyfills.ts"
+    "src/todo.js"
   ],
   "include": [
-    "src/**/*.d.ts"
+    "src/**/*.d.js"
   ]
-}
+} 
