@@ -11,11 +11,10 @@
     <h2 style="margin:5px">ToDo</h2> 
   </div>
 
-    <div ng-controller="TodoListController as todoList">
-      
-      <span style="margin:50px">{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
-      [ <a href="" ng-click="todoList.archive()">Archive</a> ]
-      [ <a href="" ng-click="todoList.retrieve()">Retrieve</a> ]
+    <div ng-controller="TodoListController as todoList"> 
+      <span style="margin:50px">{{todoList.remaining()}} of {{todoList.todos.length}} task{{todoList.plural}} remaining</span> 
+      <button class="addBtn" ng-click="todoList.archive()">Archive</button> 
+      <button class="addBtn" ng-click="todoList.retrieve()">Retrieve</button>
 
       <ul class="unstyled">
         <li ng-repeat="todo in todoList.todos">
@@ -24,8 +23,8 @@
         </li>
       </ul>
       <form ng-submit="todoList.addTodo()">
-        <input style="margin:50px" type="text" ng-model="todoList.todoText"  size="50"
-               placeholder="Add a task here!">
+        <input style="margin:40px" class="heighttext" type="text" ng-model="todoList.todoText"  size = "50"
+               placeholder=" Add a task here!">
         <input class="addBtn" type="submit" value="add">
       </form>
     </div>

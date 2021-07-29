@@ -2,10 +2,10 @@ angular.module('todoApp', [])
   .controller('TodoListController', function() {
     var todoList = this;
     todoList.todos = [
-      {text:'Read #1', done:false}, 
-      {text:'Todo #2', done:false}];
+      {text:'Read a book', done:false}, 
+      {text:'Buy groceries', done:false}];
     todoList.archived = [];
- 
+    todoList.plural = "s"
     todoList.addTodo = function() {
       todoList.todos.push({text:todoList.todoText, done:false});
       todoList.todoText = '';
@@ -26,6 +26,8 @@ angular.module('todoApp', [])
         if (!todo.done) todoList.todos.push(todo)
         else todoList.archived.push(todo);
       });
+      if (todoList.todos.length<2) {todoList.plural=""};
+
     };
 
     todoList.retrieve = function() {
@@ -34,5 +36,7 @@ angular.module('todoApp', [])
         todoList.todos.push(todo);
       });
       todoList.archived = [];
+      if (todoList.todos.length<2) {todoList.plural=""};
+
     };
   });
